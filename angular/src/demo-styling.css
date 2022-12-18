@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+  --main-family: 'Poppins', sans-serif;
+  --color-bg: linear-gradient(180deg, #FFFFFF 0%, #AEC6DC 100%);
+
+  /* Controls the blob blur gradient colors within the main tag's svg */
+  --top-right-blur-1: #20C6B7;
+  --top-right-blur-2: #4D9ABF;
+  --bttm-left-blur-1: #de3641;
+  --bttm-left-blur-2: #e46b73;
+}
+
+html {
+    background: var(--color-bg);
+    font-family: var(--main-family);
+    min-height: 100%;
+}
+
+body{
+  margin: 0;
+}
+
+#background {
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    height: 100%;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.header{
+    text-align: center;
+}
+
+
