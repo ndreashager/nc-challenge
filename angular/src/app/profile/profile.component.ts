@@ -53,11 +53,13 @@ export class ProfileComponent implements OnInit {
         uid: this.authService.uid,
       }
       console.log(postData)
+      this.isLoading = true
       this.updateUser(postData)
     }
   }
 
   showSuccess() {
+    this.isLoading = false
     this.success = true
     setTimeout(() => {
       this.success = false
@@ -65,6 +67,7 @@ export class ProfileComponent implements OnInit {
   }
 
   showError() {
+    this.isLoading = false
     this.error = true
     setTimeout(() => {
       this.error = false

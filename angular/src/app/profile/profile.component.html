@@ -1,38 +1,42 @@
-<div *ngIf="isLoading;else profile_page">
-  <app-spinner></app-spinner>
-</div>
 
-<ng-template #profile_page>
-  <div class="w-full max-w-sm">
-    <form  [formGroup]="profileForm" id="profileForm" (ngSubmit)="save(profileForm)" class="h-80 bg-white shadow-md px-8 pt-6 pb-10 mb-4">
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-          Name
-        </label>
-        <input size="40" formControlName="name" [class.border-red-500]="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-2 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name">
-        <p class="text-xs text-red-500" *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">Enter a valid name</p>
-      </div>
-      <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-          E-mail
-        </label>
-        <input size="40" formControlName="email" [class.border-red-500]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-2 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="test@gmail.com">
-        <p class="text-xs text-red-500" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">Enter a valid e-mail</p>
-      </div>
-      
-      <div class="flex items-center justify-between">
-        <button 
-          id="logout"
-          (click)="onLogout()"
-          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent" type="button" >
-          Logout
-        </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit">
-          Save
-        </button>
-      </div>
-      <p *ngIf="success" class="mt-4 text-right text-green-500">Profile saved!</p>
-      <p *ngIf="error" class="mt-4 text-right text-red-500">Error!</p>
-    </form>
+
+
+<div class="w-full max-w-sm">
+  <div class="h-80 bg-white shadow-md px-8 pt-6 pb-10 mb-4">
+    <div class="flex mt-24 w-80 items-center justify-center" *ngIf="isLoading;else profile_page">
+      <app-spinner></app-spinner>
+    </div>
+    <ng-template #profile_page>
+      <form [formGroup]="profileForm" id="profileForm" (ngSubmit)="save(profileForm)">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            Name
+          </label>
+          <input size="40" formControlName="name" [class.border-red-500]="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-2 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name">
+          <p class="text-xs text-red-500" *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">Enter a valid name</p>
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            E-mail
+          </label>
+          <input size="40" formControlName="email" [class.border-red-500]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-2 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="test@gmail.com">
+          <p class="text-xs text-red-500" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">Enter a valid e-mail</p>
+        </div>
+        
+        <div class="flex items-center justify-between">
+          <button 
+            id="logout"
+            (click)="onLogout()"
+            class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent" type="button" >
+            Logout
+          </button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit">
+            Save
+          </button>
+        </div>
+        <p *ngIf="success" class="mt-4 font-bold text-green-500">Profile saved!</p>
+        <p *ngIf="error" class="mt-4 font-bold text-red-500">Error!</p>
+      </form>
+    </ng-template>
   </div>
-</ng-template>
+</div>
