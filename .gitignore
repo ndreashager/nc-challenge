@@ -67,3 +67,4 @@ node_modules/
 
 *firebase-adminsdk*.json
 .runtimeconfig.json
+.vscode
