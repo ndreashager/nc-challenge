@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { ProfileComponent } from './profile/profile.component'
 import { LoginComponent } from './login/login.component'
 import { AuthService } from './shared/services/auth.service'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'
 import { SpinnerComponent } from './spinner/spinner.component'
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -27,13 +27,17 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
         badge: 'bottomleft',
       },
       defaultCountry: 'SE',
-      loginHint: '+46730512798',
     },
   ],
 }
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, LoginComponent, SpinnerComponent],
+  declarations: [
+    AppComponent,
+    ProfileComponent,
+    LoginComponent,
+    SpinnerComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,

@@ -24,7 +24,8 @@ export class ProfileComponent implements OnInit {
 
   preview: string = ''
   isLoading = true
-  saved = false
+  success = false
+  error = false
 
   ngOnInit(): void {
     this.getUser()
@@ -56,15 +57,29 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  showSuccess() {
+    this.success = true
+    setTimeout(() => {
+      this.success = false
+    }, 3000)
+  }
+
+  showError() {
+    this.error = true
+    setTimeout(() => {
+      this.error = false
+    }, 3000)
+  }
+
   updateUser(postData: FormData) {
     this.http.put(environment.functionUrl + '/users', postData).subscribe({
       next: (response: any) => {
         console.log(response)
-        alert('Profile saved')
+        this.showSuccess()
       },
       error: (error: any) => {
         console.log(error)
-        alert('Error')
+        this.showError()
       },
     })
   }

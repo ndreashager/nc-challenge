@@ -4,7 +4,7 @@
 
 <ng-template #profile_page>
   <div class="w-full max-w-sm">
-    <form [formGroup]="profileForm" id="profileForm" (ngSubmit)="save(profileForm)" class="bg-white shadow-md px-8 pt-6 pb-10 mb-4">
+    <form  [formGroup]="profileForm" id="profileForm" (ngSubmit)="save(profileForm)" class="h-80 bg-white shadow-md px-8 pt-6 pb-10 mb-4">
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
           Name
@@ -31,6 +31,8 @@
           Save
         </button>
       </div>
+      <p *ngIf="success" class="mt-4 text-right text-green-500">Profile saved!</p>
+      <p *ngIf="error" class="mt-4 text-right text-red-500">Error!</p>
     </form>
   </div>
 </ng-template>
