@@ -18,12 +18,13 @@ const getUser = async (req: any, res: Response) => {
   try {
     const uid = req.headers['x-uid']
     const authUser = await auth.getUser(uid)
-    const phoneNumber = authUser.phoneNumber || ''
+    const id = authUser.phoneNumber || ''
     if (authUser.uid !== uid) {
       throw Error('User not logged in')
     } else {
-      const user = db.collection('users').doc(phoneNumber)
+      const user = db.collection('users').doc(id)
       const currentData = (await user.get()).data() || {}
+      console.log(currentData)
       return res.status(200).json(currentData)
     }
   } catch (error) {
@@ -39,19 +40,21 @@ const getUser = async (req: any, res: Response) => {
 
 const updateUser = async (req: RequestUpdate, res: Response) => {
   const {
-    body: { phoneNumber, name, email, uid },
+    body: { name, email, uid },
   } = req
 
   try {
     const authUser = await auth.getUser(uid)
+    const id = authUser.phoneNumber || ''
     if (authUser.uid !== uid) {
       throw Error('User not logged in')
     } else {
-      const user = db.collection('users').doc(phoneNumber)
+      const user = db.collection('users').doc(id)
       const currentData = (await user.get()).data() || {}
       const userObject = {
         name: name || currentData.name,
         email: email || currentData.email,
+        updatedAt: new Date().getTime(),
       }
 
       await user.set(userObject).catch((error) => {
