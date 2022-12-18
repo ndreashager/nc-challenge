@@ -25,3 +25,5 @@ npm start
 ```
 
 'Access-Control-Allow-Origin' is set to '\*' on backend on purpose
+
+Visit https://strong-mermaid-3f2f54.netlify.app/ for deployed app
