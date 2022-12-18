@@ -10,5 +10,7 @@ admin.initializeApp({
   databaseURL: 'https://nc-challenge-ecb0b.firebaseio.com',
 })
 
+const auth = admin.auth()
 const db = admin.firestore()
-export { admin, db }
+
+export { admin, db, auth }

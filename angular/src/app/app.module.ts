@@ -12,6 +12,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { ProfileComponent } from './profile/profile.component'
 import { LoginComponent } from './login/login.component'
 import { AuthService } from './shared/services/auth.service'
+import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './spinner/spinner.component'
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'redirect',
@@ -31,10 +33,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 }
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, LoginComponent],
+  declarations: [AppComponent, ProfileComponent, LoginComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

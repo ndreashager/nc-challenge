@@ -14,4 +14,5 @@ export const environment = {
     appId: '1:913690414945:web:f3d3cbaea2013a267aff20',
     measurementId: 'G-ZQ9C377QGN',
   },
+  functionUrl: 'http://127.0.0.1:5001/nc-challenge-ecb0b/europe-west1/app',
 }
