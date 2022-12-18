@@ -14,18 +14,9 @@ type RequestUpdate = {
   body: UserType
 }
 
-type RequestGet = {
-  query: {
-    uid: string
-  }
-}
-
-const getUser = async (req: RequestGet, res: Response) => {
-  const {
-    query: { uid },
-  } = req
-
+const getUser = async (req: any, res: Response) => {
   try {
+    const uid = req.headers['x-uid']
     const authUser = await auth.getUser(uid)
     const phoneNumber = authUser.phoneNumber || ''
     if (authUser.uid !== uid) {

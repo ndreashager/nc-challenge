@@ -1,17 +1,9 @@
 [build]
-  command="ng build"
-  publish="dist/angular"
+  command="npm run build"
+  publish="angular/dist/angular"
+  base="/"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[plugins]]
-  package = "netlify-plugin-cypress"
-
-  [plugins.inputs.postBuild]
-    enable = true
-
-  [plugins.inputs]
-    enable = false

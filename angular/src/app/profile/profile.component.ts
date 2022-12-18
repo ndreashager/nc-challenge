@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { AuthService } from '../shared/services/auth.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { environment } from '../../environments/environment'
 
 type FormData = {
@@ -57,25 +57,22 @@ export class ProfileComponent implements OnInit {
   }
 
   updateUser(postData: FormData) {
-    let params = new HttpParams().set('uid', this.authService.uid)
-    this.http
-      .post(environment.functionUrl + '/users', postData, { params: params })
-      .subscribe({
-        next: (response: any) => {
-          console.log(response)
-          alert('Profile saved')
-        },
-        error: (error: any) => {
-          console.log(error)
-          alert('Error')
-        },
-      })
+    this.http.put(environment.functionUrl + '/users', postData).subscribe({
+      next: (response: any) => {
+        console.log(response)
+        alert('Profile saved')
+      },
+      error: (error: any) => {
+        console.log(error)
+        alert('Error')
+      },
+    })
   }
 
   getUser() {
-    let params = new HttpParams().set('uid', this.authService.uid)
+    let headers = new HttpHeaders().set('x-uid', this.authService.uid)
     this.http
-      .get(environment.functionUrl + '/users', { params: params })
+      .get(environment.functionUrl + '/users', { headers: headers })
       .subscribe({
         next: (response: any) => {
           console.log(response)
